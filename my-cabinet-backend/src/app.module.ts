@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './user/user.module';
+import { ConsentModule } from './consent/consent.module';
+import { AuditModule } from './audit/audit.module';
+import { AuthModule } from './auth/auth.module';
 import { PayslipModule } from './payslip/payslip.module';
 
 @Module({
@@ -16,6 +20,10 @@ import { PayslipModule } from './payslip/payslip.module';
       autoLoadEntities: true,
       synchronize: true, // отключить в продакшене
     }),
+    UserModule,
+    ConsentModule,
+    AuditModule,
+    AuthModule,
     PayslipModule,
   ],
   controllers: [AppController],
