@@ -39,6 +39,13 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
+  async findByIin(iin: string): Promise<User | null> {
+    return this.userRepository.findOne({
+      where: { iin },
+      select: ['id', 'iin', 'email', 'password_hash', 'is_active'],
+    });
+  }
+
   async findAll(): Promise<User[]> {
     return this.userRepository.find({
       select: ['id', 'iin', 'email', 'phone_number', 'c1_guid', 'is_active', 'created_at'],
